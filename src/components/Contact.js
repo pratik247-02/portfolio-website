@@ -36,7 +36,7 @@ const Contact = () => {
             border-b border-gray-300 
             py-3 px-4 mb-8 
             focus:outline-none focus:border-accent
-            transition-all' />
+            transition-all' required />
             <textarea name="message" className='w-full 
             bg-transparent 
             border-b border-gray-300 
