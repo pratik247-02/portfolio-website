@@ -73,7 +73,7 @@ const Banner = () => {
         </div>
         <div className="lg:flex-1 max-w-[320px] lg:max-w-[482px] lg:ml-8 mt-8 lg:mt-0">
           <div className="rounded-full overflow-hidden mx-auto lg:mx-0 h-[320px] w-[250px] lg:h-[482px] lg:w-[400px]">
-            <img src={img} alt="" className="object-cover object-center h-full w-full" />
+            <img src={img} alt="" className="object-cover object-center h-full w-full hidden lg:block" />
           </div>
         </div>
       </div>
