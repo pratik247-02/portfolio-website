@@ -66,6 +66,129 @@
     @apply bg-gradient-to-r text-transparent bg-clip-text from-[#42A6E3] to-[#FF56F6] font-bold font-primary hover:from-[#FF56F6] hover:to-[#42A6E3];
   }
   .section {
-    @apply py-8 lg:py-24 lg:h-screen flex items-center;
+    @apply py-16 lg:py-28;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Motion + interaction layer
+   --------------------------------------------------------------------------- */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes paletteIn {
+  from {
+    opacity: 0;
+    transform: translateY(-12px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes shimmer {
+  from {
+    background-position: 200% 0;
+  }
+  to {
+    background-position: -200% 0;
+  }
+}
+
+/* Cards that tilt toward the cursor. The transform itself is written from
+   JS in a rAF; the transition here only governs the settle when the pointer
+   leaves, so the card eases back rather than snapping. */
+.tilt-card {
+  --mx: 50%;
+  --my: 50%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 400ms cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 300ms ease, box-shadow 400ms ease;
+  will-change: transform;
+}
+
+.tilt-card:hover {
+  border-color: rgba(255, 255, 255, 0.28);
+  box-shadow: 0 18px 50px -20px rgba(184, 9, 195, 0.55);
+}
+
+/* Highlight that follows the pointer across the card surface. Sits above the
+   background but below the content, and is inert to pointer events. */
+.tilt-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    380px circle at var(--mx) var(--my),
+    rgba(184, 9, 195, 0.16),
+    transparent 62%
+  );
+  opacity: 0;
+  transition: opacity 320ms ease;
+  pointer-events: none;
+}
+
+.tilt-card:hover::before {
+  opacity: 1;
+}
+
+/* Section headings get a rule that draws itself in when scrolled to. */
+.rule-in {
+  position: relative;
+}
+
+.rule-in::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  height: 2px;
+  width: 0;
+  background: linear-gradient(90deg, #42a6e3, #ff56f6);
+  transition: width 900ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.rule-in[data-shown='true']::after {
+  width: 84px;
+}
+
+kbd {
+  font-family: theme('fontFamily.secondary');
+}
+
+::selection {
+  background: rgba(184, 9, 195, 0.45);
+  color: #fff;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* The palette and the canvas both animate continuously; honour a stated
+   preference for less motion rather than assuming everyone wants it. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .tilt-card {
+    transform: none !important;
   }
 }

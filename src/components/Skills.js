@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { fadeIn } from '../variants';
+import SectionHeading from './ui/SectionHeading';
+import TiltCard from './ui/TiltCard';
 
 const groups = [
   {
@@ -31,47 +32,51 @@ const groups = [
 
 const Skills = () => {
   return (
-    <section className='section !h-auto lg:!h-auto lg:py-24' id='about'>
+    <section className='section' id='about'>
       <div className='container mx-auto'>
-        <motion.div
-          variants={fadeIn('up', 0.3)}
-          initial='hidden'
-          whileInView={'show'}
-          viewport={{ once: false, amount: 0.2 }}
-          className='mb-10'
-        >
-          <h2 className='h2 text-gradient'>SKILLS &amp; TOOLS</h2>
-          <p className='max-w-2xl text-white/70'>
-            The stack I work in day to day, in production and on my own projects.
-          </p>
-        </motion.div>
+        <SectionHeading index='03' title='Skills & Tools'>
+          The stack I work in day to day, in production and on my own projects.
+        </SectionHeading>
 
-        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'>
-          {groups.map((group, i) => (
+        <motion.div
+          initial='hidden'
+          whileInView='show'
+          viewport={{ once: true, amount: 0.1 }}
+          variants={{ show: { transition: { staggerChildren: 0.07 } } }}
+          className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5'
+        >
+          {groups.map((group) => (
             <motion.div
               key={group.title}
-              variants={fadeIn('up', 0.35 + i * 0.05)}
-              initial='hidden'
-              whileInView={'show'}
-              viewport={{ once: false, amount: 0.2 }}
-              className='border border-white/20 rounded-2xl p-6 bg-black/20 backdrop-blur-sm'
+              variants={{
+                hidden: { opacity: 0, y: 24 },
+                show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] } },
+              }}
+              className='h-full'
             >
-              <h3 className='font-primary text-[18px] uppercase tracking-widest text-gradient mb-4'>
-                {group.title}
-              </h3>
-              <div className='flex flex-wrap gap-2'>
-                {group.items.map((item) => (
-                  <span
-                    key={item}
-                    className='text-sm px-3 py-1 rounded-full border border-white/25 text-white/75'
-                  >
-                    {item}
-                  </span>
-                ))}
-              </div>
+              <TiltCard
+                intensity={5}
+                className='border border-white/15 rounded-2xl p-6 bg-white/[0.02] backdrop-blur-sm h-full'
+              >
+                <div className='relative z-10'>
+                  <h3 className='font-primary text-[15px] uppercase tracking-[0.2em] text-gradient mb-5'>
+                    {group.title}
+                  </h3>
+                  <div className='flex flex-wrap gap-2'>
+                    {group.items.map((item) => (
+                      <span
+                        key={item}
+                        className='text-sm px-3 py-1 rounded-full border border-white/20 text-white/65 hover:border-accent hover:text-white transition-colors duration-300'
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </TiltCard>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
