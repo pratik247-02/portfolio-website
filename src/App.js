@@ -3,6 +3,7 @@ import React from 'react';
 import Banner from './components/Banner';
 import Header from './components/Header';
 import Nav from './components/Nav';
+import Experience from './components/Experience';
 import Skills from './components/Skills';
 import Work from './components/Work';
 import Contact from './components/Contact';
@@ -13,8 +14,9 @@ const App = () => {
       <Header />
       <Banner />
       <Nav />
-      <Skills />
+      <Experience />
       <Work />
+      <Skills />
       <Contact />
     </div>
   );

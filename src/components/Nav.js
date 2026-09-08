@@ -1,8 +1,8 @@
 import React from 'react';
 // import icons
-import { BiHomeAlt, BiUser } from 'react-icons/bi';
-import {  BsBriefcase, BsChatSquareText } from 'react-icons/bs';
-import { FaTools } from "react-icons/fa";
+import { BiHomeAlt } from 'react-icons/bi';
+import { BsBriefcase, BsChatSquareText, BsCodeSlash } from 'react-icons/bs';
+import { FaTools } from 'react-icons/fa';
 // link
 import { Link } from 'react-scroll';
 
@@ -19,17 +19,19 @@ const Nav = () => {
             spy={true}
             offset={-200}
             className="cursor-pointer w-[60px] h-[60px] flex items-center justify-center"
+            aria-label="Home"
           >
             <BiHomeAlt />
           </Link>
           <Link
-            to="about"
+            to="experience"
             activeClass="active"
             smooth={true}
             spy={true}
             className="cursor-pointer w-[60px] h-[60px] flex items-center justify-center"
+            aria-label="Experience"
           >
-            <FaTools />
+            <BsBriefcase />
           </Link>
           <Link
             to="work"
@@ -37,8 +39,19 @@ const Nav = () => {
             smooth={true}
             spy={true}
             className="cursor-pointer w-[60px] h-[60px] flex items-center justify-center"
+            aria-label="Projects"
           >
-            <BsBriefcase />
+            <BsCodeSlash />
+          </Link>
+          <Link
+            to="about"
+            activeClass="active"
+            smooth={true}
+            spy={true}
+            className="cursor-pointer w-[60px] h-[60px] flex items-center justify-center"
+            aria-label="Skills"
+          >
+            <FaTools />
           </Link>
           <Link
             to="contact"
@@ -47,6 +60,7 @@ const Nav = () => {
             spy={true}
             offset={50}
             className="cursor-pointer w-[60px] h-[60px] flex items-center justify-center"
+            aria-label="Contact"
           >
             <BsChatSquareText />
           </Link>
