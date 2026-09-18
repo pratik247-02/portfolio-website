@@ -20,9 +20,10 @@ const open = (url) => () => window.open(url, '_blank', 'noopener,noreferrer');
 
 const COMMANDS = [
   { id: 'home', label: 'Go to Home', hint: 'Top of page', icon: BiHomeAlt, run: scrollTo('home'), group: 'Navigate' },
+  { id: 'about-me', label: 'Go to About', hint: 'Who I am', icon: BiHomeAlt, run: scrollTo('about-me'), group: 'Navigate' },
   { id: 'experience', label: 'Go to Experience', hint: 'Matrice AI', icon: BsBriefcase, run: scrollTo('experience'), group: 'Navigate' },
   { id: 'work', label: 'Go to Projects', hint: 'MCU Hub and more', icon: BsCodeSlash, run: scrollTo('work'), group: 'Navigate' },
-  { id: 'skills', label: 'Go to Skills', hint: 'Stack and tools', icon: BsTools, run: scrollTo('about'), group: 'Navigate' },
+  { id: 'skills', label: 'Go to Skills', hint: 'Stack and tools', icon: BsTools, run: scrollTo('skills'), group: 'Navigate' },
   { id: 'contact', label: 'Go to Contact', hint: 'Get in touch', icon: FaEnvelope, run: scrollTo('contact'), group: 'Navigate' },
 
   {

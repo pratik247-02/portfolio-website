@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import SectionHeading from './ui/SectionHeading';
+import CountUp from './ui/CountUp';
 
 // Each card has to mean something standing alone, so the before/after lives
 // inside one card rather than being split across two.
@@ -96,9 +97,10 @@ const Experience = () => {
                   {m.before}
                 </span>
                 <span className='text-white/25 text-[15px]'>→</span>
-                <span className='font-primary text-[26px] lg:text-[30px] leading-none text-gradient'>
-                  {m.after}
-                </span>
+                <CountUp
+                  value={m.after}
+                  className='font-primary text-[26px] lg:text-[30px] leading-none text-gradient'
+                />
               </div>
               <div className='text-sm text-white/45 leading-[1.5]'>{m.label}</div>
             </motion.div>
