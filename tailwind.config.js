@@ -27,9 +27,16 @@ module.exports = {
         accent: '#B809C3',
       },
       backgroundImage: {
-        site: "url('./assets/site-bg.jpg')",
-        about: "url('./assets/about.png')",
-        services: "url('./assets/services.png')",
+        // Was a 556 KB / 1600x6620 JPEG that decoded to a near-flat purple
+        // wash: sampled across its height it only ever moved between #1f0b3a
+        // and #311b54, with a max per-pixel deviation of 35/255 from each
+        // row's average. These stops are taken from that sampling, so the
+        // page looks the same and the largest asset on the site is gone.
+        // The radial layer reproduces the faint edge brightening the photo
+        // had; the linear one is the vertical wash.
+        site:
+          'radial-gradient(1200px 800px at 50% 0%, #311b54 0%, rgba(49,27,84,0) 60%), ' +
+          'linear-gradient(180deg, #1f0b3a 0%, #29104a 22%, #2d1f56 50%, #200f43 74%, #23144b 100%)',
       },
     },
   },

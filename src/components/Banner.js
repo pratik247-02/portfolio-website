@@ -1,6 +1,7 @@
 import React, { useRef, useCallback } from 'react';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { motion } from 'framer-motion';
+import imgWebp from '../assets/pratik3.webp';
 import img from '../assets/pratik3.jpeg';
 import { BsCloudDownload } from 'react-icons/bs';
 import GraphCanvas from './GraphCanvas';
@@ -166,11 +167,20 @@ const Banner = () => {
             <div className='relative'>
               <div className='absolute -inset-3 rounded-full bg-gradient-to-tr from-[#42A6E3]/25 to-[#FF56F6]/25 blur-2xl' />
               <div className='relative rounded-full overflow-hidden border border-white/15 h-[300px] w-[300px] lg:h-[420px] lg:w-[420px] mx-auto'>
-                <img
-                  src={img}
-                  alt='Pratik Raje'
-                  className='object-cover object-center h-full w-full'
-                />
+                {/* WebP at 840px (2x the largest render size) with the
+                    original JPEG as a fallback. width/height are set so the
+                    circle reserves its space before the image decodes. */}
+                <picture>
+                  <source srcSet={imgWebp} type='image/webp' />
+                  <img
+                    src={img}
+                    alt='Pratik Raje'
+                    width='420'
+                    height='420'
+                    fetchPriority='high'
+                    className='object-cover object-center h-full w-full'
+                  />
+                </picture>
               </div>
             </div>
           </motion.div>
