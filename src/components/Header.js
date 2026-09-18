@@ -5,20 +5,39 @@ const openPalette = () =>
   window.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', metaKey: true }));
 
 const Header = () => {
+  // The hero darkens its own background with a gradient overlay; without a
+  // matching wash up here the two backgrounds meet in a visible seam across
+  // the top of the page.
   return (
-    <header className='py-8 relative z-20'>
+    <header className='py-6 lg:py-7 relative z-20 bg-gradient-to-b from-[#0a0a0a]/75 to-transparent'>
       <div className='container mx-auto'>
         <div className='flex justify-between items-center'>
-          <Link to='home' smooth={true} offset={-200} className='cursor-pointer'>
-            <h2
-              style={{ fontSize: '42px' }}
-              className='text-gradient font-bold inline-block'
-            >
+          <Link
+            to='home'
+            smooth={true}
+            offset={-200}
+            className='cursor-pointer group flex items-center gap-x-3'
+            aria-label='Pratik Raje — home'
+          >
+            {/* Devanagari and Latin have different vertical metrics, so the
+                two halves are aligned on their own baselines in a flex row
+                rather than left to sit inline and drift apart. */}
+            <span className='font-devanagari text-gradient font-semibold text-[34px] lg:text-[38px] leading-none'>
               नमस्कार
-            </h2>
-            <p style={{ fontSize: '42px' }} className='inline'>
+            </span>
+            <span
+              className='text-[26px] lg:text-[28px] leading-none transition-transform duration-300 group-hover:-rotate-6'
+              role='img'
+              aria-label='folded hands'
+            >
               🙏
-            </p>
+            </span>
+
+            <span className='hidden md:block h-7 w-px bg-white/20 mx-1' />
+
+            <span className='hidden md:block font-primary text-[15px] tracking-[0.14em] uppercase text-white/55 group-hover:text-white/85 transition-colors'>
+              Pratik Raje
+            </span>
           </Link>
 
           <div className='flex items-center gap-x-4'>

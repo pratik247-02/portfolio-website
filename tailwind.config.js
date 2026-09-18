@@ -5,6 +5,10 @@ module.exports = {
       primary: 'Orbitron',
       secondary: 'Rajdhani',
       tertiary: 'Aldrich',
+      // Orbitron and Rajdhani carry no Devanagari glyphs, so नमस्कार was
+      // falling back to whatever the OS supplied — Nirmala UI on Windows,
+      // something else everywhere else.
+      devanagari: ['Noto Sans Devanagari', 'sans-serif'],
     },
     container: {
       padding: {
