@@ -11,8 +11,11 @@ module.exports = {
       devanagari: ['Noto Sans Devanagari', 'sans-serif'],
     },
     container: {
+      center: true,
       padding: {
-        DEFAULT: '15px',
+        DEFAULT: '20px',
+        sm: '28px',
+        lg: '40px',
       },
     },
     screens: {
@@ -20,6 +23,14 @@ module.exports = {
       md: '768px',
       lg: '960px',
       xl: '1200px',
+      // Tailwind's .container caps at the current breakpoint, so without these
+      // everything stopped at 1200px — 61% of a 1920px screen, the rest left
+      // as empty gutter. Two steps rather than one, because a single 1560
+      // stop would leave 1440 and 1536 laptops stranded on the 1200 cap.
+      // Prose is capped separately by a ch measure, so a wider container does
+      // not lengthen a line of text.
+      '2xl': '1400px',
+      '3xl': '1560px',
     },
     extend: {
       colors: {

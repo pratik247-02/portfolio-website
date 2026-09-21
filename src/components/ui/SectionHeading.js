@@ -31,7 +31,7 @@ const SectionHeading = ({ index, title, children }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.4 }}
       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-      className='mb-12'
+      className='mb-8'
     >
       <div className='flex items-baseline gap-x-4 mb-4'>
         <span className='font-primary text-sm text-accent tracking-[0.3em]'>{index}</span>
@@ -44,7 +44,7 @@ const SectionHeading = ({ index, title, children }) => {
         </h2>
       </div>
       {children && (
-        <p className='max-w-2xl text-white/60 text-[17px] leading-[1.7] mt-8'>{children}</p>
+        <p className='max-w-2xl text-white/60 text-[17px] leading-[1.7] mt-4'>{children}</p>
       )}
     </motion.div>
   );

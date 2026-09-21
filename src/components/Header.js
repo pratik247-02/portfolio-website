@@ -32,12 +32,6 @@ const Header = () => {
             >
               🙏
             </span>
-
-            <span className='hidden md:block h-7 w-px bg-white/20 mx-1' />
-
-            <span className='hidden md:block font-primary text-[15px] tracking-[0.14em] uppercase text-white/55 group-hover:text-white/85 transition-colors'>
-              Pratik Raje
-            </span>
           </Link>
 
           <div className='flex items-center gap-x-4'>

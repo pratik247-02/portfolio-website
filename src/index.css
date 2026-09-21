@@ -66,7 +66,7 @@
     @apply bg-gradient-to-r text-transparent bg-clip-text from-[#42A6E3] to-[#FF56F6] font-bold font-primary hover:from-[#FF56F6] hover:to-[#42A6E3];
   }
   .section {
-    @apply py-16 lg:py-28;
+    @apply py-14 lg:py-20;
   }
 }
 
