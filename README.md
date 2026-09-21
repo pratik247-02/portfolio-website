@@ -1,70 +1,48 @@
-# Getting Started with Create React App
+# Portfolio — Pratik Raje
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**Live:** [pratik-raje.vercel.app](https://pratik-raje.vercel.app)
 
-## Available Scripts
+Software developer at Matrice AI, working on real-time multi-camera video
+streaming. This is the site that says so.
 
-In the project directory, you can run:
+## Running it
 
-### `npm start`
+```bash
+npm install
+npm start      # dev server on :3000
+npm run build  # production build to build/
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## What is in here
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Create React App, Tailwind, Framer Motion. No UI library — the components
+are all in `src/components/`.
 
-### `npm test`
+A few things worth knowing if you are reading the source:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**`GraphCanvas.js`** is a force-directed particle field on a canvas, written
+against `requestAnimationFrame` rather than a physics library. Neighbour
+lookup goes through a uniform spatial hash, so link-finding is roughly O(n)
+instead of the O(n²) a naive pass would cost — at 90 nodes that is the
+difference between a comfortable frame budget and a janky one on integrated
+graphics.
 
-### `npm run build`
+**`About.js`** is a working shell rather than a bio paragraph, with command
+history, tab completion and `ctrl+l`. A prompt makes a two-line answer the
+correct length instead of a lazy one.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**`Skills.js`** attaches evidence to each skill — the specific thing it was
+used for — revealed on hover so the grid stays scannable for someone who
+only wants keywords.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+**The background is a CSS gradient, not an image.** It used to be a 556 KB
+JPEG that decoded to a near-flat purple wash: sampled across its height it
+only moved between `#1f0b3a` and `#311b54`, with a maximum per-pixel
+deviation of 35/255 from each row's average. The gradient in
+`tailwind.config.js` is built from those measured stops.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+`prefers-reduced-motion` is honoured throughout.
 
-### `npm run eject`
+## Deploys
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Pushes to `master` deploy automatically to Vercel.
