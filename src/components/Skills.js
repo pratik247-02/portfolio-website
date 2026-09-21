@@ -22,9 +22,10 @@ import TiltCard from './ui/TiltCard';
 const groups = [
   {
     title: 'Frontend',
+    headline: 'Next.js',
     color: '#E23636',
     items: [
-      { name: 'React', proof: 'Led frontend delivery as top contributor across 7 repositories', where: 'Matrice AI' },
+      { name: 'Next.js', proof: 'Led frontend delivery as top contributor across 7 repositories', where: 'Matrice AI' },
       { name: 'Next.js', proof: 'Production frontends for the streaming and analytics platform', where: 'Matrice AI' },
       { name: 'TypeScript', proof: 'Primary language day to day', where: 'Matrice AI' },
       { name: 'JavaScript' },
@@ -37,6 +38,7 @@ const groups = [
   },
   {
     title: 'Real-Time & Video',
+    headline: 'WebRTC',
     color: '#4ADE80',
     items: [
       { name: 'WebRTC', proof: 'Stream startup ~15s → ~5s with trickle ICE, replacing WebSocket frames', where: 'Matrice AI' },
@@ -48,6 +50,7 @@ const groups = [
   },
   {
     title: 'Backend & Databases',
+    headline: 'OpenAPI',
     color: '#3B82F6',
     items: [
       { name: 'Node.js', proof: 'Graph traversal service over 193 nodes, 755 edges', where: 'MCU Hub' },
@@ -60,6 +63,7 @@ const groups = [
   },
   {
     title: 'Python & ML Systems',
+    headline: 'Evaluation design',
     color: '#F0A500',
     items: [
       { name: 'Python', proof: '4-stage triage pipeline behind typed contracts, each stage rerunnable alone', where: 'Triage Agent' },
@@ -72,6 +76,7 @@ const groups = [
   },
   {
     title: 'Auth & Security',
+    headline: 'Zod',
     color: '#FF7A1A',
     items: [
       { name: 'NextAuth', proof: 'SSO across two platforms via a shared session cookie, cloud and on-premise', where: 'Matrice AI' },
@@ -83,6 +88,7 @@ const groups = [
   },
   {
     title: 'Testing & Tooling',
+    headline: 'Vitest',
     color: '#A855F7',
     items: [
       { name: 'Vitest', proof: '41 tests over graph algorithms, verified by mutation testing', where: 'MCU Hub' },
@@ -169,8 +175,8 @@ const Skills = () => {
     <section className='section' id='skills'>
       <div className='container mx-auto'>
         <SectionHeading index='03' title='Skills & Tools'>
-          The dotted ones come with a receipt — hover for the specific thing it
-          was used for.
+          28 of these come with a receipt. Each card shows one; hover any
+          dotted chip for the rest.
         </SectionHeading>
 
         <motion.div
@@ -191,7 +197,11 @@ const Skills = () => {
             >
               <TiltCard
                 intensity={4}
-                className='border border-white/15 rounded-2xl p-6 bg-white/[0.02] backdrop-blur-sm h-full'
+                // The group's own colour is passed down so the card can tint
+                // its border, its corner glow and its rule without six
+                // near-duplicate class strings.
+                style={{ '--group': group.color }}
+                className='skill-card border rounded-2xl p-6 h-full'
               >
                 {/* Tooltips escape the card, so this stacking context must not
                     clip them — no overflow-hidden anywhere on this path. */}
@@ -210,6 +220,24 @@ const Skills = () => {
                     >
                       {group.title}
                     </h3>
+
+                    {/* How many of this group's skills carry evidence. The
+                        number is the argument the section is making. */}
+                    <span
+                      className='ml-auto shrink-0 text-[11px] font-primary tabular-nums px-2 py-0.5 rounded-full border'
+                      style={{
+                        color: group.color,
+                        borderColor: group.color + '55',
+                        background: group.color + '12',
+                      }}
+                      title={
+                        group.items.filter((i) => i.proof).length +
+                        ' of these come with a receipt'
+                      }
+                    >
+                      {group.items.filter((i) => i.proof).length}/
+                      {group.items.length}
+                    </span>
                   </div>
 
                   <div className='flex flex-wrap gap-2'>
@@ -224,6 +252,23 @@ const Skills = () => {
                       />
                     ))}
                   </div>
+
+                  {/* One receipt shown without asking. The hover tooltips hold
+                      all 28, but a reader who never hovers would otherwise see
+                      six lists of words — which is every other portfolio. */}
+                  {(() => {
+                    const lead = group.items.find((i) => i.name === group.headline);
+                    if (!lead || !lead.proof) return null;
+                    return (
+                      <p
+                        className='mt-5 pt-4 border-t border-white/10 text-[13.5px] leading-[1.6] text-white/55'
+                      >
+                        <span style={{ color: group.color }}>{lead.name}</span>
+                        <span className='text-white/25'> — </span>
+                        {lead.proof}
+                      </p>
+                    );
+                  })()}
                 </div>
               </TiltCard>
             </motion.div>
