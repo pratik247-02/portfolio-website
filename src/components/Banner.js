@@ -1,5 +1,5 @@
 import React, { useRef, useCallback } from 'react';
-import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaExternalLinkAlt } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import imgWebp from '../assets/pratik2.webp';
 import img from '../assets/pratik2.jpeg';
@@ -7,6 +7,11 @@ import { BsCloudDownload } from 'react-icons/bs';
 import GraphCanvas from './GraphCanvas';
 
 const NAME = 'Pratik Raje';
+
+// Served from public/ with Content-Disposition: inline, so it opens in a tab
+// rather than downloading. The version query busts the cache for anyone who
+// fetched an earlier copy, since the file is not content-hashed.
+const RESUME = '/Pratik-Resume.pdf?v=2026-09';
 
 // Each glyph animates in on its own delay. Spaces keep their width via a
 // non-breaking space so the name does not collapse mid-reveal.
@@ -50,9 +55,13 @@ const MagneticButton = ({ children, className = '', ...rest }) => {
 };
 
 const Banner = () => {
+  // Hero height is driven by its content with a floor and a cap, rather than
+  // by a share of the viewport. min-h-[82vh] meant a tall screen produced
+  // ~2,600px of hero around ~500px of content, leaving the name floating in
+  // a void; the cap stops the same thing happening in the other direction.
   return (
     <section
-      className='relative min-h-[86vh] lg:min-h-[82vh] flex items-center overflow-hidden'
+      className='relative min-h-[560px] lg:min-h-[640px] max-h-[900px] py-16 flex items-center overflow-hidden'
       id='home'
     >
       <GraphCanvas />
@@ -108,13 +117,19 @@ const Banner = () => {
               </p>
 
               <div className='flex flex-wrap gap-x-5 gap-y-4 items-center justify-center lg:justify-start mb-10'>
+                {/* Viewing is the primary action: downloading a PDF means
+                    choosing a location, waiting, then finding it again, which
+                    is several steps too many for someone who only wants to
+                    glance at it. The file is served inline, so this opens in
+                    a tab. Downloading stays available beside the socials. */}
                 <MagneticButton
-                  href='/Pratik-Resume.pdf?v=2026-09'
-                  download
+                  href={RESUME}
+                  target='_blank'
+                  rel='noreferrer'
                   className='btn btn-lg flex items-center cursor-pointer'
                 >
                   <span className='flex items-center'>
-                    Download Resume <BsCloudDownload className='ml-2' />
+                    View Resume <FaExternalLinkAlt className='ml-2 text-sm' />
                   </span>
                 </MagneticButton>
 
@@ -153,6 +168,19 @@ const Banner = () => {
                   className='text-white/60 hover:text-white hover:-translate-y-1 transition-all duration-300'
                 >
                   <FaLinkedin className='text-[28px]' />
+                </a>
+
+                <span className='w-px bg-white/15 self-stretch my-1' />
+
+                {/* The secondary path, for anyone who wants the file itself. */}
+                <a
+                  href={RESUME}
+                  download='Pratik-Raje-Resume.pdf'
+                  aria-label='Download resume as PDF'
+                  title='Download PDF'
+                  className='text-white/60 hover:text-white hover:-translate-y-1 transition-all duration-300'
+                >
+                  <BsCloudDownload className='text-[28px]' />
                 </a>
               </div>
             </motion.div>
