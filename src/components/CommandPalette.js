@@ -18,6 +18,9 @@ const scrollTo = (target) => () =>
 
 const open = (url) => () => window.open(url, '_blank', 'noopener,noreferrer');
 
+// Served inline from public/, so opening it renders the PDF in a tab.
+const RESUME = '/Pratik-Resume.pdf?v=2026-09';
+
 const COMMANDS = [
   { id: 'home', label: 'Go to Home', hint: 'Top of page', icon: BiHomeAlt, run: scrollTo('home'), group: 'Navigate' },
   { id: 'about-me', label: 'Go to About', hint: 'Who I am', icon: BiHomeAlt, run: scrollTo('about-me'), group: 'Navigate' },
@@ -28,14 +31,22 @@ const COMMANDS = [
 
   {
     id: 'resume',
+    label: 'View Resume',
+    hint: 'Opens in a new tab',
+    icon: FaRegFilePdf,
+    group: 'Actions',
+    run: open(RESUME),
+  },
+  {
+    id: 'resume-download',
     label: 'Download Resume',
     hint: 'PDF',
     icon: FaRegFilePdf,
     group: 'Actions',
     run: () => {
       const a = document.createElement('a');
-      a.href = '/Pratik-Resume.pdf?v=2026-09';
-      a.download = 'Pratik-Resume.pdf';
+      a.href = RESUME;
+      a.download = 'Pratik-Raje-Resume.pdf';
       a.click();
     },
   },
