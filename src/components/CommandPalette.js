@@ -45,6 +45,7 @@ const COMMANDS = [
   { id: 'linkedin', label: 'Open LinkedIn', hint: 'pratik24702', icon: FaLinkedin, run: open('https://www.linkedin.com/in/pratik24702'), group: 'Links' },
   { id: 'mcu', label: 'Open MCU Hub', hint: 'Live demo', icon: BsCodeSlash, run: open('https://marvel-six-lake.vercel.app'), group: 'Links' },
   { id: 'mcu-src', label: 'Open MCU Hub source', hint: 'GitHub', icon: FaGithub, run: open('https://github.com/pratik247-02/Marvel'), group: 'Links' },
+  { id: 'triage-src', label: 'Open Support Triage Agent', hint: 'GitHub', icon: FaGithub, run: open('https://github.com/pratik247-02/support-triage-agent'), group: 'Links' },
 ];
 
 /**
