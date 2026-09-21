@@ -11,8 +11,10 @@
     "react-scripts": "5.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "cross-env PORT=3000 HOST=127.0.0.1 react-scripts start",
     "build": "react-scripts build",
+    "serve": "node scripts/serve-local.js",
+    "ports": "node scripts/check-ports.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -35,6 +37,7 @@
     ]
   },
   "devDependencies": {
+    "cross-env": "^10.1.0",
     "framer-motion": "^8.4.3",
     "react-icons": "^4.12.0",
     "react-scroll": "^1.8.9",
