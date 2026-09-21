@@ -103,7 +103,7 @@ const Banner = () => {
                 I work on a real-time multi-camera video streaming and analytics
                 platform at{' '}
                 <span className='text-white/95 font-medium'>Matrice AI</span> — WebRTC
-                transport, canvas overlays at 30 FPS, and the latency problems
+                transport, adaptive canvas overlays, and the latency problems
                 underneath both.
               </p>
 
