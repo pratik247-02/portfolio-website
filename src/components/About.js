@@ -39,10 +39,11 @@ const OUTPUT = {
   work: [
     'Multi-camera video streaming + analytics platform.',
     null,
-    ['latency', '~15s → ~7s (WebSocket frames → WebRTC)'],
+    ['latency', '~15s → ~5s, 67% (WebSocket → WebRTC, trickle ICE)'],
     ['desync', '4–5s → none (RTP timestamp matching)'],
     ['ports', '1000+ → 16 (capped the grid at 4x4)'],
-    ['canvas', '5–25 shapes/frame at 30 FPS'],
+    ['canvas', 'boxes, polygons, masks, pose key-points'],
+    ['contracts', '1,127 operations, 7 consumer repos'],
     null,
     'The pattern: most of these were fixed by removing something,',
     'not by adding something.',
@@ -55,6 +56,17 @@ const OUTPUT = {
     null,
     ['try', 'Ho Yinsen → Galactus, 4 hops, 0.2ms p95'],
     ['live', 'marvel-six-lake.vercel.app'],
+  ],
+  triage: [
+    'Support Triage Agent — an AI agent over real customer',
+    'service conversations, built harness first.',
+    null,
+    ['precision', '65.2% auto-handled, vs a 36.0% baseline'],
+    ['coverage', '25.8% — three quarters still needs a human'],
+    ['routing', '6 guard clauses ahead of model confidence'],
+    null,
+    'I wrote the evaluation before the pipeline, which is why',
+    'I can tell you what it gets wrong and not just what it does.',
   ],
   mistake: [
     'I predicted a DB traversal would cost 200–350ms and that my',
@@ -79,6 +91,7 @@ const OUTPUT = {
     ['stack', 'what I work in'],
     ['work', 'what I do at Matrice AI'],
     ['mcu', 'the Marvel graph project'],
+    ['triage', 'the AI support agent'],
     ['mistake', 'the time I was wrong, in writing'],
     ['facts', 'opinions, loosely held'],
     ['contact', 'how to reach me'],
@@ -102,7 +115,7 @@ const FACTS = [
 ];
 
 const COMMANDS = [...Object.keys(OUTPUT), 'facts'];
-const SUGGESTED = ['whoami', 'stack', 'work', 'mcu', 'mistake', 'facts'];
+const SUGGESTED = ['whoami', 'stack', 'work', 'mcu', 'triage', 'facts'];
 
 const BANNER = [
   "Type a command, or click one below. 'help' lists everything.",
