@@ -34,7 +34,7 @@ const COMMANDS = [
     group: 'Actions',
     run: () => {
       const a = document.createElement('a');
-      a.href = '/Pratik-Resume.pdf';
+      a.href = '/Pratik-Resume.pdf?v=2026-09';
       a.download = 'Pratik-Resume.pdf';
       a.click();
     },

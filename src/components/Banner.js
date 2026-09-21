@@ -1,8 +1,8 @@
 import React, { useRef, useCallback } from 'react';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { motion } from 'framer-motion';
-import imgWebp from '../assets/pratik3.webp';
-import img from '../assets/pratik3.jpeg';
+import imgWebp from '../assets/pratik2.webp';
+import img from '../assets/pratik2.jpeg';
 import { BsCloudDownload } from 'react-icons/bs';
 import GraphCanvas from './GraphCanvas';
 
@@ -109,7 +109,7 @@ const Banner = () => {
 
               <div className='flex flex-wrap gap-x-5 gap-y-4 items-center justify-center lg:justify-start mb-10'>
                 <MagneticButton
-                  href='/Pratik-Resume.pdf'
+                  href='/Pratik-Resume.pdf?v=2026-09'
                   download
                   className='btn btn-lg flex items-center cursor-pointer'
                 >
